@@ -22,9 +22,12 @@ class ErrorAction implements ActionInterface
 
         if (@$model['error']) {
             $request->setOriginalErrorCode(
-                @$model['error']['code'] ?: @$model['error']['type'] ?: @$model['error']['message']
+                @$model['error']['code'] ?: @$model['error']['type']
             );
-            if (@$model['error']['type'] === 'card_error') {
+            if (@$model['error']['message']) {
+                $request->setOriginalErrorMessage($model['error']['message']);
+            }
+            if (@$model['error']['code']) {
                 switch ($model['error']['code']) {
                     case 'invalid_number':
                     case 'invalid_expiry_month':

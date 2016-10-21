@@ -14,6 +14,8 @@ class GetError extends Generic implements GetErrorInterface
 
     protected $original_error_code;
 
+    protected $original_error_message;
+
     /**
      * {@inheritDoc}
      */
@@ -25,7 +27,7 @@ class GetError extends Generic implements GetErrorInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {
@@ -33,7 +35,7 @@ class GetError extends Generic implements GetErrorInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalErrorCode()
     {
@@ -41,11 +43,28 @@ class GetError extends Generic implements GetErrorInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function setOriginalErrorCode($error_code)
     {
         $this->original_error_code = $error_code;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getOriginalErrorMessage()
+    {
+        return $this->original_error_message;
+    }
+
+    /**
+     * @return string
+     */
+    public function setOriginalErrorMessage($error_message)
+    {
+        $this->original_error_message = $error_message;
     }
 
     /**

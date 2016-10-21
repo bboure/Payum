@@ -233,7 +233,7 @@ class ErrorActionTest extends GenericActionTest
         $model = [
             'error' => [
                 'type' => 'invalid_request_error',
-                'message' => 'This is an error message',
+                'message' => 'Amount must be at least 50 cents',
             ],
         ];
 
@@ -245,22 +245,20 @@ class ErrorActionTest extends GenericActionTest
     /**
      * @test
      */
-    public function shouldSetTheOriginalErrorCodeCorrectlyFromMessage()
+    public function shouldSetTheOriginalErrorMessage()
     {
         $action = new ErrorAction();
 
         $model = [
             'error' => [
-                'message' => 'This is an error message',
+                'type' => 'invalid_request_error',
+                'message' => 'Amount must be at least 50 cents',
             ],
         ];
 
         $action->execute($error = new GetError($model));
 
-        $this->assertEquals(
-            'This is an error message',
-            $error->getOriginalErrorCode()
-        );
+        $this->assertEquals('Amount must be at least 50 cents', $error->getOriginalErrorMessage());
     }
 
     /**

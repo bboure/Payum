@@ -7,19 +7,29 @@ use Payum\Core\Model\ModelAwareInterface;
 interface GetErrorInterface extends ModelAwareInterface, ModelAggregateInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue();
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalErrorCode();
 
     /**
-     * @return mixed
+     * @return string
      */
     public function setOriginalErrorCode($error_code);
+
+    /**
+     * @return string
+     */
+    public function getOriginalErrorMessage();
+
+    /**
+     * @return string
+     */
+    public function setOriginalErrorMessage($error_message);
 
     /**
      * @return void
